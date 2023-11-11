@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Major Assignment 3</title>
+    <script src="libs/d3.js"></script>
+    <script src="libs/network.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <h1>Major Assignment 3</h1>
+    <h3>Tiyasa Saha</h3>
+   
+    <label for="linkStrengthSlider">Link Strength</label>
+    <input type="range" id="linkStrengthSlider" min="0" max="1" step="0.1" value="0.5">
+
+    <label for="collideStrengthSlider">Collide Strength</label>
+    <input type="range" id="collideStrengthSlider" min="0" max="1" step="0.1" value="0.5">
+    
+    <label for="chargeStrengthSlider">Charge Strength</label>
+    <input type="range" id="chargeStrengthSlider" min="-1000" max="1000" step="100" value="-30">
+
+    <label>Node Size:</label>
+    <input type="radio" id="degreeSize" name="nodeSize" value="degree" checked>
+    <label for="degreeSize">Degree</label>
+    <input type="radio" id="fixedSize" name="nodeSize" value="fixed">
+    <label for="fixedSize">Fixed</label>
+    
+    <script>
+        d3.json("data/MA3-Tiyasa_networkX.json").then(function (data){
+            let svg = d3.select('body').append("svg")
+                .attr("viewBox", "0 0 1500 1500") // Keep viewBox for responsiveness
+                .attr("width", "80vw") // Set the width to 80% of the viewport width
+                .attr("height", "80vh"); // Set the height to 80% of the viewport height
+
+            console.log(data)
+            simulate(data, svg)
+        });
+    </script>
+</body>
+</html>
